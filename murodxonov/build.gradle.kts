@@ -1,13 +1,12 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("maven-publish")
 }
 
 android {
     namespace = "uz.smart.input"
-    compileSdk {
-        version = release(34)
-    }
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 21
@@ -26,14 +25,26 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
+    }
+}
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.github.uzbedeveloper"
+                artifactId = "SmartInputsUZ"
+                version = "0.1.0"
+            }
+        }
     }
 }
 
