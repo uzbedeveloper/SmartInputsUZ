@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SmartUzPhoneInput">
+        <attr name="uz_prefix" format="string" />
+        <attr name="uz_hint" format="string" />
+        <attr name="uz_accent_color" format="color" />
+    </declare-styleable>
+</resources>
